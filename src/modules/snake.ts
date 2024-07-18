@@ -14,15 +14,15 @@ class Snake{
 
     }
 
-    //
+    //获取蛇头的X坐标
     get X(){
         return this.head.offsetLeft;
     }
-    //
+    //获取蛇头的Y坐标
     get Y(){
         return this.head.offsetTop;
     }
-    //
+    //设置蛇头的X坐标
     set X(value:number){
 
         //新值和旧值相同，不做修改
@@ -37,10 +37,10 @@ class Snake{
         }
 
         //禁止掉头
-        if(this.bodies[1]&&(this.bodies[1] as HTMLElement).offsetLeft === value){
+        if(this.bodies[1]/*判断第二节身体的存在*/&&(this.bodies[1] as HTMLElement).offsetLeft === value/*蛇头与身体重叠*/){
             //如果发生了掉头，让蛇继续反方向移动
             if(value>this.X){
-                //
+                //修改蛇头的X轴坐标使其不能掉头
                 value=this.X-10;
             }else{
                 value=this.X+10;
@@ -96,6 +96,7 @@ class Snake{
             let X=(this.bodies[i-1] as HTMLElement).offsetLeft;
             let Y=(this.bodies[i-1] as HTMLElement).offsetTop;
 
+            //修改当前身体的位置
             (this.bodies[i] as HTMLElement).style.left = X+'px';
             (this.bodies[i] as HTMLElement).style.top = Y+'px';
 
@@ -107,7 +108,7 @@ class Snake{
         //获取所有的身体，检查其是否和蛇头的坐标发生重叠
         for(let i=1;i<this.bodies.length;i++){
             let bd =this.bodies[i] as HTMLElement;
-            if(this.X === bd.offsetLeft&&this.Y ===bd.offsetTop){
+            if(this.X === bd.offsetLeft&&this.Y ===bd.offsetTop/* 蛇头与蛇身坐标重叠*/){
                 //进入判断，说明撞到身体，游戏结束
                 throw new Error('撞到自己')
             }

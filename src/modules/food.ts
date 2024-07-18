@@ -24,7 +24,7 @@ class Food{
         let top = Math.round(Math.random()*29)*10;
         let left = Math.round(Math.random()*29)*10
 
-
+        //修改位置
         this.element.style.left=left+'px';
         this.element.style.top=top+'px';
     }

@@ -6,11 +6,11 @@ import ScorePanel from "./scorePanel";
 //游戏控制器，控制所有类
 class GameControl{
     //定义三个属性
-    //
+    //蛇
     snake:Snake;
-    //
+    //食物
     food:Food;
-    //
+    //计分板
     scorePanel:ScorePanel;
 
     //保存蛇的移动方向
@@ -45,7 +45,7 @@ class GameControl{
         this.direction=event.key;
 
     }
-    //
+    //蛇头的移动
     run(){
         //根据方向this.direction使蛇的位置改变
         //获取蛇现在的坐标
@@ -97,7 +97,7 @@ class GameControl{
 
     }
 
-    //
+    //检查蛇吃到食物
     checkEAT(X:number,Y:number){
         if( X === this.food.X && Y ===this.food.Y){
             //食物位置改变
